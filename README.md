@@ -1,2 +1,5 @@
 # lld
-common lld patterns
+
+Parkinglot
+MovieTicketbookingSystem
+
