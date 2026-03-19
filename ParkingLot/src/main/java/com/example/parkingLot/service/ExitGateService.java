@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Objects;
 
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+
 @Service
 public class ExitGateService {
 
@@ -29,7 +31,7 @@ public class ExitGateService {
 
     public double takeExit(Ticket ticket){
         if(Objects.isNull(ticketRepository.getById(ticket.getId())))
-            throw new ParkingLotException(HttpStatus.UNAUTHORIZED, "Invalid Ticket");
+            throw new ParkingLotException(UNAUTHORIZED, UNAUTHORIZED.value(), "Invalid Ticket");
         ticket.setExitTime(Instant.now());
         floorRepository.getById(ticket.getParkingSpot().getFloorId())
                 .releaseSpot(ticket.getParkingSpot());

@@ -12,7 +12,6 @@ public class ParkingSpot {
     UUID id = UUID.randomUUID();
     String spotNo;
     UUID floorId;
-    Vehicle vehicle;
     SpotType spotType;
     AtomicBoolean occupied;
 

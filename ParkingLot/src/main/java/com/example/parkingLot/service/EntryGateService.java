@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.Optional;
 
+import static org.springframework.http.HttpStatus.EXPECTATION_FAILED;
+
 @Service
 public class EntryGateService {
 
@@ -34,16 +36,15 @@ public class EntryGateService {
     public Ticket allocateSpot(String vehicleNo, VehicleType type) {
         Vehicle vehicle = new Vehicle(vehicleNo, type);
 
-        Optional<ParkingSpot> spot = spotAllocationStrategy.allocateSpot(parkingLot, type);
-        if(spot.isEmpty())
-            throw new ParkingLotException(HttpStatus.EXPECTATION_FAILED, "No Spot Available");
+        ParkingSpot spot = spotAllocationStrategy.allocateSpot(parkingLot, type)
+                .orElseThrow(() -> new ParkingLotException(EXPECTATION_FAILED, EXPECTATION_FAILED.value(), "No Spot Available"));
 
         try {
-            Ticket ticket = new Ticket(vehicle, spot.get());
+            Ticket ticket = new Ticket(vehicle, spot);
             ticketRepository.save(ticket);
             return ticket;
         } catch (Exception ex){
-            floorRepository.getById(spot.get().getFloorId()).releaseSpot(spot.get());
+            floorRepository.getById(spot.getFloorId()).releaseSpot(spot);
             throw ex;
         }
     }
