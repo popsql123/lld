@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 public class ParkingLotException extends RuntimeException {
 
     private final HttpStatus status;
+    private final int errorCode;
 
-    public ParkingLotException(HttpStatus status, String message){
+    public ParkingLotException(HttpStatus status, int errorCode, String message){
         super(message);
         this.status = status;
+        this.errorCode = errorCode;
     }
 }

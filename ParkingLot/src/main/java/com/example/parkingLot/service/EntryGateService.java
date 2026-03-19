@@ -7,18 +7,16 @@ import com.example.parkingLot.model.ParkingSpot;
 import com.example.parkingLot.model.Ticket;
 import com.example.parkingLot.model.Vehicle;
 import com.example.parkingLot.repository.FloorRepository;
+import com.example.parkingLot.repository.FloorRepositoryImpl;
 import com.example.parkingLot.repository.TicketRepository;
+import com.example.parkingLot.repository.TicketRepositoryImpl;
 import com.example.parkingLot.strategy.SpotAllocationStrategy;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.time.Instant;
-import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.EXPECTATION_FAILED;
 
 @Service
-public class EntryGateService {
+public class EntryGateService implements EntryGate {
 
     SpotAllocationStrategy spotAllocationStrategy;
     TicketRepository ticketRepository;

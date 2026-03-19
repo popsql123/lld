@@ -3,10 +3,11 @@ package com.example.parkingLot.service;
 import com.example.parkingLot.exception.ParkingLotException;
 import com.example.parkingLot.model.Ticket;
 import com.example.parkingLot.repository.FloorRepository;
+import com.example.parkingLot.repository.FloorRepositoryImpl;
 import com.example.parkingLot.repository.TicketRepository;
+import com.example.parkingLot.repository.TicketRepositoryImpl;
 import com.example.parkingLot.strategy.PaymentStrategy;
 import com.example.parkingLot.strategy.PricingStrategy;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -15,7 +16,7 @@ import java.util.Objects;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Service
-public class ExitGateService {
+public class ExitGateService implements ExitGate {
 
     TicketRepository ticketRepository;
     PricingStrategy pricingStrategy;

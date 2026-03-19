@@ -1,7 +1,6 @@
 package com.example.parkingLot.repository;
 
-import com.example.parkingLot.model.ParkingSpot;
-import com.example.parkingLot.model.Ticket;
+import com.example.parkingLot.model.Floor;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,26 +8,27 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ParkingSpotRepository {
+public class FloorRepositoryImpl implements FloorRepository {
 
-    Map<UUID, ParkingSpot> store;
+    Map<UUID, Floor> store;
 
-    public ParkingSpotRepository() {
+    public FloorRepositoryImpl() {
         this.store = new ConcurrentHashMap<>();
+        ;
     }
 
-    public ParkingSpotRepository(List<ParkingSpot> elements) {
+    public FloorRepositoryImpl(List<Floor> elements) {
         store = new HashMap<>();
-        for (ParkingSpot e : elements) {
+        for (Floor e : elements) {
             store.put(e.getId(), e);
         }
     }
 
-    public void save(ParkingSpot t) {
+    public void save(Floor t) {
         store.put(t.getId(), t);
     }
 
-    public ParkingSpot getById(UUID id){
+    public Floor getById(UUID id){
         return store.getOrDefault(id, null);
     }
 }
