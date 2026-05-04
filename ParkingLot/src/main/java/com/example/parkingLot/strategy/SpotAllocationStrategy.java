@@ -1,6 +1,5 @@
 package com.example.parkingLot.strategy;
 
-import com.example.parkingLot.enums.SpotType;
 import com.example.parkingLot.enums.VehicleType;
 import com.example.parkingLot.model.ParkingLot;
 import com.example.parkingLot.model.ParkingSpot;

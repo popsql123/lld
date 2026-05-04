@@ -7,9 +7,7 @@ import com.example.parkingLot.model.ParkingSpot;
 import com.example.parkingLot.model.Ticket;
 import com.example.parkingLot.model.Vehicle;
 import com.example.parkingLot.repository.FloorRepository;
-import com.example.parkingLot.repository.FloorRepositoryImpl;
 import com.example.parkingLot.repository.TicketRepository;
-import com.example.parkingLot.repository.TicketRepositoryImpl;
 import com.example.parkingLot.strategy.SpotAllocationStrategy;
 import org.springframework.stereotype.Service;
 

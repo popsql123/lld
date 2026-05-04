@@ -3,14 +3,11 @@ package com.example.parkingLot.service;
 import com.example.parkingLot.exception.ParkingLotException;
 import com.example.parkingLot.model.Ticket;
 import com.example.parkingLot.repository.FloorRepository;
-import com.example.parkingLot.repository.FloorRepositoryImpl;
 import com.example.parkingLot.repository.TicketRepository;
-import com.example.parkingLot.repository.TicketRepositoryImpl;
 import com.example.parkingLot.strategy.PaymentStrategy;
 import com.example.parkingLot.strategy.PricingStrategy;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.Objects;
 
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
@@ -33,7 +30,7 @@ public class ExitGateService implements ExitGate {
     public double takeExit(Ticket ticket){
         if(Objects.isNull(ticketRepository.getById(ticket.getId())))
             throw new ParkingLotException(UNAUTHORIZED, UNAUTHORIZED.value(), "Invalid Ticket");
-        ticket.setExitTime(Instant.now());
+        ticket.markExit();
         floorRepository.getById(ticket.getParkingSpot().getFloorId())
                 .releaseSpot(ticket.getParkingSpot());
         return pricingStrategy.calculateBill(ticket);

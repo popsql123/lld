@@ -2,7 +2,6 @@ package com.example.parkingLot.model;
 
 import com.example.parkingLot.enums.SpotType;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class ParkingLot {
 
     public Optional<ParkingSpot> allocateSpot(SpotType type){
         for(Floor floor: floors){
-            Optional<ParkingSpot> spot = floor.bookSpot(type);
+            Optional<ParkingSpot> spot = floor.allocateSpot(type);
             if(spot.isPresent()) return spot;
         }
         return Optional.empty();
