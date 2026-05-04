@@ -73,7 +73,7 @@ These **10 categories cover ~90% of real-world systems**.
 
 ---
 
-If you'd like, I can also create a **second table showing the design patterns (Strategy, Observer, Factory, etc.) most commonly used in each of these 8 problems**, which helps during interviews when they ask **“which design pattern would you apply?”**.
+If you'd like, I can also create a **second table showing the design patterns (Strategy, Observer, Factory, etc.) commonly used in each of these 8 problems**, which helps during interviews when they ask **“which design pattern would you apply?”**.
 
 
 
